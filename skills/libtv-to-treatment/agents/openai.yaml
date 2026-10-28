@@ -1,0 +1,4 @@
+interface:
+  display_name: "LibTV 导演提案"
+  short_description: "把画布中的已有作品整理成 16:9 可翻页导演提案"
+  default_prompt: "使用 $libtv-to-treatment 把我 LibTV 画布中的已有作品整理成一份导演提案，没有现成作品时新建画布并衔接 POP MV 自动生成。"

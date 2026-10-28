@@ -1,0 +1,32 @@
+# dsh-libtv — 一次安装同时带来「技能」和「LibTV 工具」。
+#
+# 两条 insert：
+#   1. dsh-skill-filesystem：把本包 skills/ 目录注册成技能源（装到哪都能定位到）。
+#   2. dsh-mcp-client：以 stdio 方式拉起本包的 lib/serve.mjs，由它做 OAuth 与协议透传。
+#
+# 关于 command：用 process.execPath（宿主自己的 Node/Electron 可执行文件）而不是 `node`，
+# 这样用户不需要预装 Node；ELECTRON_RUN_AS_NODE=1 让 Electron 以纯 Node 模式运行。
+# env 在 dsh-mcp-client 里是「合并进已清洗的环境变量」，不是替换，所以只写这一项。
+
+- insert:
+    - id: libtv-skill-filesystem
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: libtv-plugin
+        includeDefaultRoots: false
+        bundledSkillDir: !!js process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:path').dirname(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('dsh-libtv/package.json')), 'skills')
+
+    - id: libtv-mcp
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: libtv
+        transport: stdio
+        command: !!js process.execPath
+        args:
+          - !!js process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:path').dirname(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('dsh-libtv/package.json')), 'lib', 'main.mjs')
+        env:
+          ELECTRON_RUN_AS_NODE: '1'
+        # 视频生成/导出会跑几分钟到十几分钟，默认 60s 会误判超时。
+        toolCallTimeoutMs: 1200000
+        # 首次运行尚未授权时不阻塞会话加载，授权由 libtv_auth 工具在会话内触发。
+        failOnStartupError: false

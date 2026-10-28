@@ -1,0 +1,4 @@
+interface:
+  display_name: "LibTV 编曲成片"
+  short_description: "用 Zen Piano 配乐驱动 Seedance 2.5 一镜到底广告"
+  default_prompt: "使用 $music-driven-product-ad 默认制作20秒配乐（用户指定时长时同步调整音视频），并生成产品向右穿越多个空间的横向剖面一镜到底广告。"

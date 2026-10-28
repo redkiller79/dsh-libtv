@@ -1,0 +1,4 @@
+interface:
+  display_name: "LibTV Blender联动视频生成"
+  short_description: "从双视角场景与角色三视图完成白模运镜并转为实拍视频"
+  default_prompt: "使用 $libtv-blender-live-action 根据我的剧本和场景参考完成 LibTV 出图、Blender 白模运镜与 Seedance 实拍化。"

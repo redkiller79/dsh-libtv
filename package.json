@@ -1,0 +1,37 @@
+{
+  "name": "dsh-libtv",
+  "version": "0.1.0",
+  "description": "LibTV for DeepSeek Harness — LibTV canvas, image/video/audio generation, script and delivery tools over MCP, plus three production skills. First run opens a browser for WeChat QR authorization.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "libtv",
+    "mcp",
+    "video-generation",
+    "image-generation"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "bin": {
+    "libtv-auth": "./lib/cli.mjs"
+  },
+  "files": [
+    "lib",
+    "skills",
+    "locale",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

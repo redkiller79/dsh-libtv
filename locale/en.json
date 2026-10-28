@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "LibTV MCP",
+    "description": "Connects the LibTV remote MCP server through a local proxy that handles LibTV account authorization and token refresh."
+  }
+}

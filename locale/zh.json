@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "LibTV MCP",
+    "description": "通过本地代理接入 LibTV 远程 MCP，由代理完成 LibTV 账号授权与 token 自动刷新。"
+  }
+}
